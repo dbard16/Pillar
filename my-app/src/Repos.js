@@ -4,7 +4,7 @@ class Repos extends Component {
 
   constructor(){
     super();
-    this.state= {
+    this.state = {
       stars: true,
       forks: false,
       contributors: false
@@ -15,6 +15,7 @@ class Repos extends Component {
 
   }
 
+  //These 3 set functions are basically just onClick handlers that change what the sorting should be
   setStars(){
     this.setState({
       stars: true,
@@ -40,9 +41,10 @@ class Repos extends Component {
   render(){
     const repos = this.props.location.state.repos
     let sortedRepos;
+    //Based on the state, take our array and sort it either by stars, forks, or contributions. From there it's all being rendered the same
     if(this.state.stars){
       sortedRepos = repos.sort(function(a,b) {
-        return b.stars - a.stars
+        return b.stargazers_count - a.stargazers_count
       })
     }
     else if(this.state.forks){
@@ -52,10 +54,9 @@ class Repos extends Component {
     }
     else{
        sortedRepos = repos.sort(function(a,b) {
-        return b.contributors - a.contributors
+        return b.totContributors - a.totContributors
       })
     }
-    console.log(sortedRepos)
     return(
       <div>
         <nav className="navbar navbar-light navbar-expand-sm">
@@ -92,13 +93,13 @@ class Repos extends Component {
                   {repo.name}
                 </td>
                 <td>
-                  {repo.stars}
+                  {repo.stargazers_count}
                 </td>
                 <td>
                   {repo.forks}
                 </td>
                 <td>
-                  {repo.contributors}
+                  {repo.totContributors}
                 </td>
               </tr>
               ))}

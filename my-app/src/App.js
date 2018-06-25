@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Header from './Header';
 import CompanyDetail from './CompanyDetail';
 import Repos from './Repos';
+import Contributors from './Contributors'
 import './App.css';
 
 class App extends Component {
@@ -18,6 +19,8 @@ class App extends Component {
             <CompanyDetail />
             <Switch>
             <Route exact path="/Repos" component={Repos} />
+            <Route exact path="/internal" component={Contributors} />
+             <Route exact path="/external" component={Contributors} />
             </Switch>
 
           </div>

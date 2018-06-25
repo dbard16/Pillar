@@ -19,6 +19,7 @@ class CompanySearch extends Component {
 
   handleSubmit(ev){
     ev.preventDefault();
+    //put the searchCompany function on the parent a level above so the state there gets updated
     this.props.searchCompany(this.state.input)
     this.setState({
       input: ''
@@ -32,7 +33,7 @@ class CompanySearch extends Component {
         <form onSubmit={handleSubmit}>
           <div className='form-group'>
             <h4> Enter Company Name</h4>
-            <input className='form-control' type='text' value={this.state.input} onChange={this.updateInput} />
+            <input placeholder="Enter a GitHub Organization"className='form-control' type='text' value={this.state.input} onChange={this.updateInput} />
             <button type="submit" className="btn btn-success"> Search </button>
           </div>
 
